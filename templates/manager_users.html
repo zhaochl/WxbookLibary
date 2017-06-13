@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block title%} 用户管理 {% endblock %}
+{% block link%} 
+	<a href="{{ url_for('manager')}}"> 返回 </a> 
+{%  endblock%}
+{% block body%}
+	<h2> 用户管理 </h2>
+	<table width="600" border="1", align="center">
+	  <tr>
+	    <th align="center"> 学号</th>
+	    <th align="center"> 姓名 </th>
+	    <th align="center"> 学院 </th>
+	    <th align="center"> 查看 </th>
+	  </tr>
+	  {% for user in users%}
+	  <tr>
+	    <th align="center"> {{user.student_id}}</th>
+	    <th align="center"> {{user.name}}</th>
+	    <th align="center"> {{user.college}}</th>
+	    <th align="center"> <a href="{{ url_for('manager_user', id=user.user_id)}}"> 点击进入 </a> </th>
+	  </tr>
+	  {% endfor %}
+	</table>
+{% endblock%}
